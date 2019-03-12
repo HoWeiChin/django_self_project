@@ -1,0 +1,84 @@
+{% load static %}<!DOCTYPE html>
+<html>
+    
+  <head>
+    <meta charset="utf-8">
+      
+    <title>The Iron Grind</title>
+    <link rel='stylesheet' href="{% static 'css/bootstrap.min.css.map' %}">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            
+        }
+        
+        li {
+            float: left;
+        }
+        
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            
+        }
+        
+        li a:hover:not(.active){
+            background-color:#111;
+        }
+        .active{
+            background-color:#4CAF50;
+        }
+      
+    </style>
+      
+  </head>
+    
+  <body>
+      
+      <ul>
+          <li><a href='#'>Home</a></li>
+          <li><a href='#About'>About Us</a></li>
+          <li><a href='Contact'>Contact Us</a></li>
+          <li><a class='active' href='OurAthletes'> Our Athletes</a></li>
+          <li><a href='OurCoaches'>Our Coaches</a></li>
+          <li><a href='Prog'>Training Programmes</a></li>
+      </ul>
+      
+      <h1>Our PR Honour Roll</h1>
+      <table border="1">
+        <thead>
+            <tr>
+                <th>Athlete</th>
+                <th>Body Weight</th>
+                <th>Snatch PR</th>
+                <th>Clean & Jerk PR</th>
+            </tr>
+        </thead>
+          
+        <tbody>
+                {%for athlete in athletes%}
+                    {%if athlete.is_still_trng%}
+                        <tr>
+                        <td>{{athlete.name}}</td>
+                        <td>{{athlete.body_weight}}</td>
+                        <td>{{athlete.snatch_pr}}</td>
+                        <td>{{athlete.cj_pr}}</td>
+                        </tr>
+                        
+                    {% endif %}
+                {% endfor %}
+        </tbody>
+      </table>
+      
+      
+
+
+  </body>
+    
+</html>
